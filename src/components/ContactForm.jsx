@@ -17,18 +17,28 @@ const ContactForm = () => {
       queryType,
       message,
     };
-    sendMessageSubmit(newMessage);
+    // sendMessageSubmit(newMessage);
 
     toast.success(
-      "Message Sent! Thanks for completing the form, We'll be in touch soon!",
-      { autoClose: 10000 }
+      "Message Sent! Thanks for completing the form. We'll be in touch soon!",
+      {
+        position: "top-center",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: false,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "dark",
+        // transition: { Bounce },
+      }
     );
   };
   return (
     <section className="bg-[hsl(148,38%,91%)]">
       <div className="container m-auto max-w-3xl py-24">
         <div className="bg-white px-6 py-8 mb-4 shadow-md rounded-md  m-4 md:m-0">
-          <form>
+          <form onSubmit={submitForm}>
             <h2 className="text-3xl  font-semibold mb-6">Contact Us</h2>
             <div className="lg:flex lg:gap-4">
               <div className="mb-4 lg:w-1/2">
@@ -92,7 +102,7 @@ const ContactForm = () => {
                     id="support-request"
                     value={queryType}
                     onChange={(e) => setQueryType(e.target.value)}
-                   />
+                  />
                   <label className=" text-gray-700">Support Request</label>
                 </div>
               </div>
